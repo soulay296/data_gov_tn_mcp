@@ -9,8 +9,9 @@ class Settings(BaseSettings):
     MCP_ENV: str = "local"
 
     DATAGOV_API_ENV: str = "prod"
-    DATAGOV_API_BASE_URL: str = "https://www.data.gov.tn/api/3"
+    DATAGOV_API_BASE_URL: str = "https://catalog.data.gov.tn/fr/api/3"
     DATAGOV_API_KEY: str = ""
+    DATAGOV_VERIFY_SSL: bool = True
 
     LOG_LEVEL: str = "INFO"
 

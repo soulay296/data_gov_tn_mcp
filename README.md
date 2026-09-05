@@ -60,8 +60,9 @@ Variables disponibles (voir `config.py`) :
 | `MCP_PORT` | `8000` | Port d'écoute |
 | `MCP_ENV` | `local` | Environnement du serveur MCP |
 | `DATAGOV_API_ENV` | `prod` | Environnement de l'API data.gov.tn |
-| `DATAGOV_API_BASE_URL` | `https://www.data.gov.tn/api/3` | URL de base CKAN |
+| `DATAGOV_API_BASE_URL` | `https://catalog.data.gov.tn/fr/api/3` | URL de base CKAN |
 | `DATAGOV_API_KEY` | *(vide)* | Clé API data.gov.tn |
+| `DATAGOV_VERIFY_SSL` | `true` | Vérification du certificat SSL |
 | `LOG_LEVEL` | `INFO` | Niveau de log |
 | `SENTRY_DSN` | *(vide)* | DSN Sentry (tracing) |
 | `ALLOWED_HOSTS` | data.gov.tn, ... | Hôtes autorisés |
