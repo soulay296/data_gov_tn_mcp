@@ -5,6 +5,15 @@ from starlette.responses import JSONResponse
 
 from config import settings
 from logging_config import setup_logging
+from tools.get_dataservice_info import get_dataservice_info as _get_dataservice_info
+from tools.get_dataservice_openapi_spec import (
+    get_dataservice_openapi_spec as _get_dataservice_openapi_spec,
+)
+from tools.get_dataset_info import get_dataset_info as _get_dataset_info
+from tools.get_resource_info import get_resource_info as _get_resource_info
+from tools.list_dataset_resources import (
+    list_dataset_resources as _list_dataset_resources,
+)
 from tools.search_dataservices import search_dataservices as _search_dataservices
 from tools.search_datasets import search_datasets as _search_datasets
 
@@ -35,6 +44,38 @@ async def search_dataservices(
 ) -> str:
     """Rechercher des dataservices (APIs externes référencées)."""
     return await _search_dataservices(query, page, page_size, organization, tags)
+
+
+@mcp.tool()
+async def get_dataset_info(dataset_id: str, lang: str = "fr") -> str:
+    """Récupérer les métadonnées détaillées d'un jeu de données (fr, ar, en)."""
+    return await _get_dataset_info(dataset_id, lang)
+
+
+@mcp.tool()
+async def list_dataset_resources(
+    dataset_id: str, page: int = 1, page_size: int = 20, lang: str = "fr"
+) -> str:
+    """Lister les ressources (fichiers) attachées à un dataset (fr, ar, en)."""
+    return await _list_dataset_resources(dataset_id, page, page_size, lang)
+
+
+@mcp.tool()
+async def get_resource_info(resource_id: str, lang: str = "fr") -> str:
+    """Récupérer les métadonnées détaillées d'une ressource (fr, ar, en)."""
+    return await _get_resource_info(resource_id, lang)
+
+
+@mcp.tool()
+async def get_dataservice_info(dataservice_id: str, lang: str = "fr") -> str:
+    """Récupérer les métadonnées d'un dataservice (fr, ar, en)."""
+    return await _get_dataservice_info(dataservice_id, lang)
+
+
+@mcp.tool()
+async def get_dataservice_openapi_spec(dataservice_id: str, lang: str = "fr") -> str:
+    """Récupérer la spécification OpenAPI d'un dataservice (fr, ar, en)."""
+    return await _get_dataservice_openapi_spec(dataservice_id, lang)
 
 
 START_TIME = datetime.now(UTC)
